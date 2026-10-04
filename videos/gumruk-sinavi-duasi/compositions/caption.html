@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Meme caption</title>
+  </head>
+  <body>
+    <template>
+      <style>
+@font-face {
+        font-family: "Anton";
+        src: url("assets/fonts/Anton.ttf") format("truetype");
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: "Montserrat";
+        src: url("assets/fonts/Montserrat-Bold.ttf") format("truetype");
+        font-weight: 700;
+      }
+      @font-face {
+        font-family: "Montserrat";
+        src: url("assets/fonts/Montserrat-ExtraBold.ttf") format("truetype");
+        font-weight: 800;
+      }
+      #root {
+        --bg: #0e2a21;
+        --bg-deep: #08190f;
+        --cream: #f3efdf;
+        --mint: #8dfbcb;
+        --stamp: #1fbf63;
+      }
+      /* ---------- meme caption (TikTok style) ---------- */
+      #root {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .cap-text {
+        position: absolute;
+        left: 60px;
+        right: 60px;
+        top: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        font-weight: 800;
+        font-size: 62px;
+        line-height: 1.12;
+        color: #ffffff;
+        text-align: center;
+        -webkit-text-stroke: 11px #050505;
+        paint-order: stroke fill;
+        text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+      }
+      .cap-line {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .cap-emoji {
+        height: 62px;
+        width: auto;
+        display: block;
+      }
+      .brand-tag {
+        position: absolute;
+        top: 430px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+      }
+      .brand-tag span {
+        font-weight: 700;
+        font-size: 26px;
+        letter-spacing: 0.12em;
+        color: var(--mint);
+        background: rgba(8, 25, 15, 0.82);
+        border: 2px solid rgba(141, 251, 203, 0.55);
+        border-radius: 999px;
+        padding: 10px 26px;
+      }
+
+            </style>
+      <div id="root" data-composition-id="caption" data-width="1080" data-height="1920">
+        <div class="cap-text">
+          <div class="cap-line">Kimsenin bilmediği</div>
+          <div class="cap-line">
+            GÜMRÜK SINAVI DUASI
+            <img class="cap-emoji" src="assets/img/emoji-pray.png" alt="" />
+            <img class="cap-emoji" src="assets/img/emoji-grin.png" alt="" />
+          </div>
+        </div>
+        <div class="brand-tag"><span>CAN’LI 7/24 EĞİTİM MERKEZİ</span></div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        // Static caption (as in the original post); a gentle breath on the emoji keeps it alive.
+        tl.fromTo(
+          ".cap-emoji",
+          { scale: 1 },
+          { scale: 1.12, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 57, transformOrigin: "50% 60%" },
+          0.4
+        );
+        window.__timelines["caption"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

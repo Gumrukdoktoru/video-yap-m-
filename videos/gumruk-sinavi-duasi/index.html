@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Gümrük Sınavı Duası — Can’lı 7/24 Eğitim Merkezi</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Anton";
+        src: url("assets/fonts/Anton.ttf") format("truetype");
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: "Montserrat";
+        src: url("assets/fonts/Montserrat-Bold.ttf") format("truetype");
+        font-weight: 700;
+      }
+      @font-face {
+        font-family: "Montserrat";
+        src: url("assets/fonts/Montserrat-ExtraBold.ttf") format("truetype");
+        font-weight: 800;
+      }
+      :root {
+        --bg: #0e2a21;
+        --bg-deep: #08190f;
+        --cream: #f3efdf;
+        --mint: #8dfbcb;
+        --stamp: #1fbf63;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--bg-deep);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* ---------- classroom plate ---------- */
+      #plate-wrap {
+        position: absolute;
+        inset: 0;
+        transform-origin: 540px 985px;
+      }
+      #plate {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+          </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="40.6"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- Classroom plate: AI-generated footage with the customs slides tracked onto the projector -->
+      <div id="plate-wrap">
+        <video
+          id="plate"
+          class="clip"
+          src="assets/video/plate_comp.mp4"
+          muted
+          playsinline
+          data-start="0"
+          data-duration="36.4"
+          data-track-index="0"
+        ></video>
+      </div>
+
+      <!-- Meme caption, as in the original post -->
+      <div
+        id="caption"
+        data-composition-id="caption"
+        data-composition-src="compositions/caption.html"
+        data-start="0"
+        data-duration="35.75"
+        data-track-index="1"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- Branded end card -->
+      <div
+        id="endcard"
+        data-composition-id="endcard"
+        data-composition-src="compositions/endcard.html"
+        data-start="35.6"
+        data-duration="5"
+        data-track-index="2"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <!-- Premixed soundtrack: voiceover, AMİN chorus, laughter, room tone, SFX, outro sting -->
+      <audio
+        id="mix"
+        src="assets/audio/mix.wav"
+        data-start="0"
+        data-duration="40.6"
+        data-track-index="3"
+        data-volume="1"
+      ></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // AMİN punch-in on the projector, then a small laugh-shake
+      tl.fromTo("#plate-wrap", { scale: 1 }, { scale: 1.12, duration: 0.28, ease: "power3.out" }, 33.47);
+      tl.fromTo(
+        "#plate-wrap",
+        { x: 0, y: 0 },
+        {
+          immediateRender: false,
+          keyframes: [
+            { x: -6, y: 3, duration: 0.08 },
+            { x: 5, y: -4, duration: 0.08 },
+            { x: -3, y: 2, duration: 0.08 },
+            { x: 0, y: 0, duration: 0.1 },
+          ],
+        },
+        33.5
+      );
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
